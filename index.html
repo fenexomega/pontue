@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags always come first -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Pontue</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+  <base href="#" target="_blank">
+</head>
+
+<body ng-app="mainApp">
+
+  <div class="container">
+    <nav class="navbar navbar-default bg-faded">
+      <div class="navbar-header">
+        <a ng-href="/" class="navbar-brand mb-0">PONTUE</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">Início</a>
+        </li>
+        <li class="">
+          <a href="#">Histórico</a>
+        </li>
+        <li class="">
+          <a href="#">Conta</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div ng-view>
+  </div>
+
+  <!-- jQuery first, then Bootstrap JS. -->
+  <script src="js/vendor/jquery-3.1.1.min.js"></script>
+  <script src="js/vendor/bootstrap.min.js"></script>
+  <script src="js/vendor/angular.js" charset="utf-8"></script>
+  <script src="js/vendor/angular-route.min.js" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
+</body>
+
+</html>
