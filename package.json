@@ -1,0 +1,29 @@
+{
+  "name": "pontue-client",
+  "version": "0.0.1",
+  "description": "Um sistema de ponto eletrônico",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ws --spa index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenexomega/pontue.git"
+  },
+  "keywords": [
+    "ponto",
+    "eletronico",
+    "angular",
+    "bootstrap",
+    "web",
+    "frontend",
+    "client"
+  ],
+  "author": "Jordy Ferreira",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fenexomega/pontue/issues"
+  },
+  "homepage": "https://github.com/fenexomega/pontue#readme"
+}
