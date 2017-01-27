@@ -11,6 +11,18 @@ function PontoController($scope,$interval,PontoService)
   $scope.dia_semana = myMoment.format('dddd');
   $scope.data_formatada = myMoment.format('LL');
 
+  function incrementarData()
+  {
+    $scope.dataDeHoje.setSeconds($scope.dataDeHoje.getSeconds() + 1);
+    var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+    $scope.hora = myMoment.format('h:mm:ss');
+  }
+
+  $scope.init = function(){
+    incrementarData();
+    $interval(incrementarData,1000);
+  }
+
 
   $scope.pegarHorasDaSemana = function(){
     PontoService.pegarPontosDaSemana(token,
