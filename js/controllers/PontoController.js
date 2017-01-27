@@ -10,8 +10,9 @@ function PontoController($scope,PontoService)
   function ajustarVarDeData()
   {
     $scope.dataDeHoje = new Date();
-    var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+    var myMoment = moment($scope.dataDeHoje)
     $scope.data_formatada = myMoment.format('LL');
+    $scope.dia_semana = myMoment.format('dddd');
   }
 
   $scope.init = function(){
