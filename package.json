@@ -25,5 +25,7 @@
   "bugs": {
     "url": "https://github.com/fenexomega/pontue/issues"
   },
-  "homepage": "https://github.com/fenexomega/pontue#readme"
+  "homepage": "https://github.com/fenexomega/pontue#readme",
+  "dependencies": {
+  }
 }

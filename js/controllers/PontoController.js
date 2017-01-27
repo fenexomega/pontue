@@ -5,6 +5,21 @@ var timeoutRef;
 
 function PontoController($scope,PontoService)
 {
+  $scope.dataDeHoje = new Date();
+
+  function ajustarVarDeData()
+  {
+    $scope.dataDeHoje = new Date();
+    var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+    $scope.data_formatada = myMoment.format('LL');
+  }
+
+  $scope.init = function(){
+    ajustarVarDeData();
+    setInterval(1000,ajustarVarDeData);
+  }
+
+
   $scope.pegarHorasDaSemana = function(){
     PontoService.pegarPontosDaSemana(token,
     function(data,status){
@@ -15,6 +30,7 @@ function PontoController($scope,PontoService)
     function(data,status){
       // TODO o que acontece quando dá erro
     }
+
   );
 
   $scope.submeterHorasDoDia = function(objeto)
@@ -44,7 +60,7 @@ function PontoController($scope,PontoService)
 
     },
     function(data,status){
-      
+
     });
   }
 
