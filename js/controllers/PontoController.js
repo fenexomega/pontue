@@ -3,22 +3,13 @@ var controllers = angular.module('mainApp.controllers');
 var URL = "http://localhost:8080";
 var timeoutRef;
 
-function PontoController($scope,PontoService)
+function PontoController($scope,$interval,PontoService)
 {
   $scope.dataDeHoje = new Date();
-
-  function ajustarVarDeData()
-  {
-    $scope.dataDeHoje = new Date();
-    var myMoment = moment($scope.dataDeHoje)
-    $scope.data_formatada = myMoment.format('LL');
-    $scope.dia_semana = myMoment.format('dddd');
-  }
-
-  $scope.init = function(){
-    ajustarVarDeData();
-    setInterval(1000,ajustarVarDeData);
-  }
+  var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+  $scope.myMoment = myMoment;
+  $scope.dia_semana = myMoment.format('dddd');
+  $scope.data_formatada = myMoment.format('LL');
 
 
   $scope.pegarHorasDaSemana = function(){
@@ -71,4 +62,4 @@ function PontoController($scope,PontoService)
 
 controllers.controller('PontoController',PontoController);
 
-PontoController.$inject = ['$scope','PontoService'];
+PontoController.$inject = ['$scope','$interval','PontoService'];
