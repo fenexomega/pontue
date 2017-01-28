@@ -18,9 +18,56 @@ function PontoController($scope,$interval,PontoService)
     $scope.hora = myMoment.format('h:mm:ss');
   }
 
+  function configChart(){
+    $scope.myChartObject = {};
+
+    $scope.myChartObject.type = "BarChart";
+
+    $scope.myChartObject.data = {
+      "cols": [
+        {id: "dia", label: "Dias da Semana", type: "string"},
+        {id: "horas", label: "Total de Horas", type: "number"}
+      ], 
+      "rows": [
+        {c: [
+            {v: "Domingo"},
+            {v: 2}
+        ]},
+        {c: [
+          {v: "Segunda"},
+          {v: 2}
+        ]},
+        {c: [
+            {v: "Terça"},
+            {v: 4}
+        ]},
+        {c: [
+            {v: "Quarta"},
+            {v: 2},
+        ]},
+        {c: [
+            {v: "Quinta"},
+            {v: 2},
+        ]},
+        {c: [
+            {v: "Sexta"},
+            {v: 1},
+        ]},
+        {c: [
+            {v: "Sábado"},
+            {v: 2},
+        ]}
+    ]
+  };
+    $scope.myChartObject.options = {
+        'title': 'Total de Horas por Dia da Semana'
+    };
+  }
+
   $scope.init = function(){
     incrementarData();
     $interval(incrementarData,1000);
+    configChart();
   }
 
 
@@ -72,6 +119,5 @@ function PontoController($scope,$interval,PontoService)
   }
 }
 
-controllers.controller('PontoController',PontoController);
-
 PontoController.$inject = ['$scope','$interval','PontoService'];
+controllers.controller('PontoController',PontoController);

@@ -7,7 +7,11 @@ var services    = angular.module('mainApp.services',[]);
 
 var app = angular.module("mainApp",[
   /* Módulos da aplicação */
-  'ngRoute',
+  'ngRoute', 
+  
+  /* Módulo Google Charts */
+  'googlechart',
+  
   /* Nossos módulos */
   'mainApp.controllers' ,'mainApp.services', //'mainApp.directives', 'mainApp.constants'
 ]);

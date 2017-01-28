@@ -1,17 +1,76 @@
 <!DOCTYPE html>
 <div class="container" ng-init="init()">
-  <div class="row">
-    <div class="col-sm-8">
-      <h2> {{ dia_semana}}, {{ data_formatada }}. Hora: {{ hora }}</h2>
-
-      <h2>Você cumpriu <span class="hora">15</span>horas semanais</h2>
-
-        <div class="jumbotron">
-          <h3>Submeter Horas</h3>
+    <div class="row">
+        <h2> {{ dia_semana}}, {{ data_formatada }}. Hora: {{ hora }}</h2>
+        <h2>Você cumpriu <span class="hora">15</span>horas semanais</h2>
+        <div class="col-sm-6">
+            <div class="jumbotron">
+                <h3>Submeter Horas</h3>
+                <div class="row">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                Manhã
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tarde
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Noite
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox">C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div google-chart chart="myChartObject" style="height:350px;"></div>
         </div>
     </div>
-    <div class="col-sm-6">
-
-    </div>
-  </div>
 </div>
