@@ -7,11 +7,11 @@ var services    = angular.module('mainApp.services',[]);
 
 var app = angular.module("mainApp",[
   /* Módulos da aplicação */
-  'ngRoute', 
-  
+  'ngRoute',
+
   /* Módulo Google Charts */
   'googlechart',
-  
+
   /* Nossos módulos */
   'mainApp.controllers' ,'mainApp.services', //'mainApp.directives', 'mainApp.constants'
 ]);
@@ -22,7 +22,13 @@ app.config(function($routeProvider,$locationProvider){
     templateUrl: 'partials/inicio.html',
     controller: 'PontoController'
   })
+  .when('/historico',{
+    templateUrl: 'partials/historico.html'
+  })
   .otherwise({
     redirectTo: '/'
   });
+  $locationProvider.html5Mode(true);
+
+
 })
