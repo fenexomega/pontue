@@ -3,7 +3,7 @@ var controllers = angular.module('mainApp.controllers');
 var URL = "http://localhost:8080";
 var timeoutRef;
 
-function PontoController($scope,$interval,PontoService)
+function PontoController($scope, $interval, PontoService)
 {
   $scope.dataDeHoje = new Date();
   var myMoment = moment($scope.dataDeHoje).locale('pt-br');

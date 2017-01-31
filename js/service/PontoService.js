@@ -32,6 +32,5 @@ function PontoService($http)
   }
 }
 
-services.service("PontoService",PontoService);
-
+services.service("PontoService", PontoService);
 PontoService.$inject = ['$http'];

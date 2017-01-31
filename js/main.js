@@ -2,8 +2,8 @@
 
 var controllers = angular.module('mainApp.controllers',[]);
 var services    = angular.module('mainApp.services',[]);
+var constants   = angular.module('mainApp.constants',[]);
 // var directives  = angular.module('mainApp.directives',[]);
-// var constants   = angular.module('mainApp.constants',[]);
 
 var app = angular.module("mainApp",[
   /* Módulos da aplicação */
@@ -13,7 +13,7 @@ var app = angular.module("mainApp",[
   'googlechart',
 
   /* Nossos módulos */
-  'mainApp.controllers' ,'mainApp.services', //'mainApp.directives', 'mainApp.constants'
+  'mainApp.controllers' ,'mainApp.services', 'mainApp.constants'//, 'mainApp.directives'
 ]);
 
 app.config(function($routeProvider,$locationProvider){
@@ -23,7 +23,8 @@ app.config(function($routeProvider,$locationProvider){
     controller: 'PontoController'
   })
   .when('/historico',{
-    templateUrl: 'partials/historico.html'
+    templateUrl: 'partials/historico.html',
+    controller: 'LoginController'
   })
   .otherwise({
     redirectTo: '/'
