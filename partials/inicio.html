@@ -1,4 +1,4 @@
-<div class="container" ng-init="init()">
+<div class="container">
     <div class="row">
         <h3> {{ dia_semana}}, {{ data_formatada }}. Hora: {{ hora }}</h3>
         <h3>Você cumpriu <span class="hora">15</span>horas semanais</h3>
@@ -6,66 +6,76 @@
             <div class="jumbotron">
                 <h3>Submeter Horas</h3>
                 <form>
-                      <table class="table table-striped">
-                          <tr>
-                              <td>Manhã</td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.manha.ab" type="checkbox">A-B</label>
-                                  </div>
-                              </td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.manha.cd" type="checkbox">C-D</label>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>Tarde</td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.tarde.ab" type="checkbox">A-B</label>
-                                  </div>
-                              </td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.tarde.cd" type="checkbox">C-D</label>
-                                  </div>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td>Noite</td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.noite.ab"
-                                        type="checkbox">A-B</label>
-                                  </div>
-                              </td>
-                              <td>
-                                  <div class="checkbox">
-                                      <label><input ng-model="ponto.noite.cd"
-                                        type="checkbox">C-D</label>
-                                  </div>
-                              </td>
-                          </tr>
-                      </table>
-
-
-                      <div class="row">
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Manhã</td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.manha.ab" type="checkbox">
+                                      A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.manha.cd" type="checkbox">
+                                      C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tarde</td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.tarde.ab" type="checkbox">
+                                      A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.tarde.cd" type="checkbox">
+                                      C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Noite</td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.noite.ab" type="checkbox">
+                                      A-B
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                      <input ng-model="ponto.noite.cd" type="checkbox">
+                                      C-D
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="row">
                         <div class="col-md-4">
-
                         </div>
                         <div class="col-md-4">
-
                         </div>
                         <div class="col-md-4">
-                          <button
-                          ng-click="console.log('hello world')">Enviar</button>
-                          <a ng-click="console.log(this)">afsdfds</a>
+                            <button ng-click="submeterHorasDoDia(ponto)">Enviar</button>
+                            <a ng-click="afsdfds()">afsdfds</a>
                         </div>
-                      </div>
+                    </div>
                 </form>
-
             </div>
         </div>
         <div class="col-sm-6">
