@@ -1,33 +1,24 @@
 'use strict';
 var controllers = angular.module('mainApp.controllers');
-var URL = "http://localhost:8080";
-var timeoutRef;
 
-function PontoController($scope, $interval, PontoService)
+function PontoController($scope, $interval, PontoService, moment)
 {
-  $scope.dataDeHoje = new Date();
-  var myMoment = moment($scope.dataDeHoje).locale('pt-br');
-  $scope.myMoment = myMoment;
-  $scope.dia_semana = myMoment.format('dddd');
-  $scope.data_formatada = myMoment.format('LL');
 
   function incrementarData()
   {
     $scope.dataDeHoje.setSeconds($scope.dataDeHoje.getSeconds() + 1);
-    var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+    var myMoment = moment($scope.dataDeHoje);
     $scope.hora = myMoment.format('h:mm:ss');
-  }
+  };
 
-  function configChart(){
+  function configChart()
+  {
     $scope.myChartObject = {};
-
     $scope.myChartObject.type = "BarChart";
 
     $scope.myChartObject.data = {
-      "cols": [
-        {id: "dia", label: "Dias da Semana", type: "string"},
-        {id: "horas", label: "Total de Horas", type: "number"}
-      ], 
+      "cols": [{id: "dia", label: "Dias da Semana", type: "string"},
+               {id: "horas", label: "Total de Horas", type: "number"}],
       "rows": [
         {c: [
             {v: "Domingo"},
@@ -57,21 +48,33 @@ function PontoController($scope, $interval, PontoService)
             {v: "Sábado"},
             {v: 2},
         ]}
-    ]
+      ]};
+      $scope.myChartObject.options = {
+          'title': 'Total de Horas por Dia da Semana'
+      };
   };
-    $scope.myChartObject.options = {
-        'title': 'Total de Horas por Dia da Semana'
-    };
-  }
 
-  $scope.init = function(){
+
+
+  $scope.init = function()
+  {
+    console.log("Init");
+    $scope.dataDeHoje = new Date();
+    var myMoment = moment($scope.dataDeHoje).locale('pt-br');
+    $scope.myMoment = myMoment;
+    $scope.dia_semana = myMoment.format('dddd');
+    $scope.data_formatada = myMoment.format('LL');
+
+
     incrementarData();
     $interval(incrementarData,1000);
     configChart();
-  }
+  };
 
 
-  $scope.pegarHorasDaSemana = function(){
+  $scope.pegarHorasDaSemana = function()
+  {
+    console.log("Pegando horas da semana!");
     PontoService.pegarPontosDaSemana(token,
     function(data,status){
       $scope.horasSemana = data.horas;
@@ -80,32 +83,35 @@ function PontoController($scope, $interval, PontoService)
     //On Error
     function(data,status){
       // TODO o que acontece quando dá erro
-    }
+    });
+  };
 
-  );
 
   $scope.submeterHorasDoDia = function(objeto)
-  // Objeto é um json no seguinte formato
-  /*
-   *  {
-   *    "comentario":"",
-   *     "horarios":{
-   *      "manha":{
-   *      "ab":0,
-   *      "cd":0
-   *      },
-   *      "tarde":{
-   *      "ab":0,
-   *      "cd":0
-   *      },
-   *      "noite":{
-   *      "ab":0,
-   *      "cd":0
-   *      }
-   *    }
-   *  }
-   */
   {
+    // Objeto é um json no seguinte formato
+    /*
+     *  {
+     *    "comentario":"",
+     *     "horarios":{
+     *      "manha":{
+     *      "ab":0,
+     *      "cd":0
+     *      },
+     *      "tarde":{
+     *      "ab":0,
+     *      "cd":0
+     *      },
+     *      "noite":{
+     *      "ab":0,
+     *      "cd":0
+     *      }
+     *    }
+     *  }
+     */
+    console.log("Submeter horas!");
+    console.log(objeto);
+    return;
     PontoService.enviarPonto(objeto,
     function(data,status){
 
@@ -113,11 +119,8 @@ function PontoController($scope, $interval, PontoService)
     function(data,status){
 
     });
-  }
+  };
+};
 
-
-  }
-}
-
-PontoController.$inject = ['$scope','$interval','PontoService'];
-controllers.controller('PontoController',PontoController);
+PontoController.$inject = ['$scope','$interval','PontoService', 'moment'];
+controllers.controller('PontoController', PontoController);

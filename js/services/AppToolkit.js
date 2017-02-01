@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('starter.services');
+var services = angular.module('mainApp.services');
 
 function AppToolkit(config) {
 

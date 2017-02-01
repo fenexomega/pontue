@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <!-- Required meta tags always come first -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Language" content="pt-br">
   <title>Pontue</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -13,9 +12,7 @@
 
   <base href="/">
 </head>
-
 <body ng-app="mainApp">
-
   <div class="container">
     <nav class="navbar navbar-default bg-faded">
       <div class="navbar-header">
@@ -39,19 +36,30 @@
   </div>
 
   <!-- jQuery first, then Bootstrap JS. -->
-  <script src="js/vendor/jquery-3.1.1.min.js"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/vendor/angular.js" charset="utf-8"></script>
-  <script src="js/vendor/angular-route.min.js" charset="utf-8"></script>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+  <script src="node_modules/angular-route/angular-route.min.js" charset="utf-8"></script>
+  <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js" charset="utf-8"></script>
 
   <!-- Google Charts API -->
   <script type="text/javascript" src="node_modules/angular-google-chart/ng-google-chart.min.js"></script>
 
-  <script src="js/vendor/moment-with-locales.min.js" charset="utf-8"></script>
+  <script src="node_modules/moment/min/moment-with-locales.min.js" charset="utf-8"></script>
+  <script src="node_modules/angular-moment/angular-moment.min.js" charset="utf-8"></script>
+
 
   <script src="js/main.js" charset="utf-8"></script>
+  <!-- Controllers -->
   <script src="js/controllers/PontoController.js" charset="utf-8"></script>
+  <script src="js/controllers/LoginController.js" charset="utf-8"></script>
+  <!-- Services -->
   <script src="js/services/PontoService.js" charset="utf-8"></script>
+  <script src="js/services/LoginService.js" charset="utf-8"></script>
+  <script src="js/services/AppToolkit.js" charset="utf-8"></script>
+  <!-- Misc -->
+  <script src="js/constants/routes.js" charset="utf-8"></script>
+  <script src="js/constants/config.js" charset="utf-8"></script>
 </body>
 
 </html>
