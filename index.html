@@ -7,13 +7,14 @@
   <meta http-equiv="Content-Language" content="pt-br">
   <title>Pontue</title>
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <base href="/">
 </head>
 <body ng-app="mainApp">
-  <div class="container">
+  <div class="container" ng-if="isUserAuthenticated()">
     <nav class="navbar navbar-default bg-faded">
       <div class="navbar-header">
         <a href="/" class="navbar-brand mb-0">PONTUE</a>
@@ -41,6 +42,9 @@
   <script src="node_modules/angular/angular.js" charset="utf-8"></script>
   <script src="node_modules/angular-route/angular-route.min.js" charset="utf-8"></script>
   <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js" charset="utf-8"></script>
+
+  <!-- External libs -->
+  <script src="node_modules/js-sha256/build/sha256.min.js" charset="utf-8"></script>
 
   <!-- Google Charts API -->
   <script type="text/javascript" src="node_modules/angular-google-chart/ng-google-chart.min.js"></script>

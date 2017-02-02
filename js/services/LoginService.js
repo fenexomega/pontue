@@ -15,12 +15,28 @@ function LoginService($http, config, routes, AppToolkit){
 
         var req = {
             method : 'POST',
-            url : LOGIN,            
-            data : params
+            url : LOGIN,
+            data : params,
+            headers: {
+              'Content-Type': 'application/json'
+            }
         };
 
-        return $http(req);
+        console.log(req);
+        // FIXME esse método não funciona
 
+        $http.post(LOGIN,params)
+          .then(function(response){
+            console.log('DEU CERTO: ' + response);
+        },function(error){
+          console.log(error);
+        });
+
+    };
+
+    this.isUserAuthenticated = function()
+    {
+      return localStorage.getItem("user") != undefined;
     };
 
 }

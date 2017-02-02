@@ -4,7 +4,7 @@ var constants = angular.module('mainApp.constants');
 
 function getConfig(){
     var config = {
-        serverAddress: ''
+        serverAddress: 'http://localhost:8080/'
     };
     return config;
 }

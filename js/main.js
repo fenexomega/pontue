@@ -17,19 +17,45 @@ var app = angular.module("mainApp",[
 ]);
 
 
-app.run(function(amMoment){
+app.run(function(amMoment,$rootScope,$route,$location, LoginService){
+  // mudar localização para português brasileiro
   amMoment.changeLocale('pt-br');
+
+  $rootScope.isUserAuthenticated = LoginService.isUserAuthenticated;
+
+  $rootScope.$on("$locationChangeStart", function(event, next, current){
+    console.log($route.routes);
+    for(var  i in $route.routes)
+    {
+        if(next.indexOf(i) != -1)
+        {
+          if($route.routes[i].requireLogin && !LoginService.isUserAuthenticated())
+          {
+            $location.path("/login");
+          }
+        }
+    }
+  });
+
+
 });
 
 app.config(function($routeProvider,$locationProvider){
   $routeProvider
+  .when('/login',{
+    templateUrl: 'partials/login.html',
+    controller: 'LoginController',
+    requireLogin: false
+  })
   .when('/',{
     templateUrl: 'partials/inicio.html',
-    controller: 'PontoController'
+    controller: 'PontoController',
+    requireLogin: true
   })
   .when('/historico',{
     templateUrl: 'partials/historico.html',
-    controller: 'LoginController'
+    controller: 'LoginController',
+    requireLogin: true
   })
   .otherwise({
     redirectTo: '/'
