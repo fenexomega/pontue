@@ -22,6 +22,7 @@ app.run(function(amMoment,$rootScope,$route,$location, LoginService){
   amMoment.changeLocale('pt-br');
 
   $rootScope.isUserAuthenticated = LoginService.isUserAuthenticated;
+  $rootScope.token = localStorage.getItem('token');
 
   $rootScope.$on("$locationChangeStart", function(event, next, current){
     console.log($route.routes);

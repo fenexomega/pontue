@@ -5,7 +5,8 @@
   function getRoutes(){
 
     var routes = {
-        LOGIN : '/api/autenticar'      
+        LOGIN : '/api/autenticar',
+        PONTO : '/api/pontos'      
     };
     return routes;
   }

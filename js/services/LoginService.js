@@ -9,7 +9,7 @@ function LoginService($http, config, routes, AppToolkit){
     this.realizarLogin = function(email, senha){
 
         var params = {
-            email : email,
+            email: email,
             senha: senha
         };
 
@@ -25,18 +25,15 @@ function LoginService($http, config, routes, AppToolkit){
         console.log(req);
         // FIXME esse método não funciona
 
-        $http.post(LOGIN,params)
-          .then(function(response){
-            console.log('DEU CERTO: ' + response);
-        },function(error){
-          console.log(error);
-        });
+        console.log(LOGIN);
+
+        return $http.post(LOGIN,params);
 
     };
 
     this.isUserAuthenticated = function()
     {
-      return localStorage.getItem("user") != undefined;
+      return localStorage.getItem("token") != undefined;
     };
 
 }

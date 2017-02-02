@@ -1,7 +1,7 @@
 'use strict';
 var controllers = angular.module('mainApp.controllers');
 
-function PontoController($scope, $interval, PontoService, moment) {
+function PontoController($scope, $interval, $rootScope, PontoService, moment) {
 
     var incrementarData = function() {
         $scope.dataDeHoje.setSeconds($scope.dataDeHoje.getSeconds() + 1);
@@ -127,30 +127,40 @@ function PontoController($scope, $interval, PontoService, moment) {
             });
     };
 
-    $scope.submeterHorasDoDia = function(objeto) {
+    $scope.submeterHorasDoDia = function(ponto) {
         // Objeto é um json no seguinte formato
         /*
          *  {
          *    "comentario":"",
          *     "horarios":{
          *      "manha":{
-         *      "ab":0,
-         *      "cd":0
+         *      "ab": false,
+         *      "cd":false
          *      },
          *      "tarde":{
-         *      "ab":0,
-         *      "cd":0
+         *      "ab":false,
+         *      "cd":false
          *      },
          *      "noite":{
-         *      "ab":0,
-         *      "cd":0
+         *      "ab":false,
+         *      "cd":false
          *      }
          *    }
          *  }
          */
-        PontoService.enviarPonto(objeto, function(data, status) {}, function(data, status) {});
+         console.log("Submetendo horas");
+        PontoService.enviarPonto(ponto,$rootScope.token).then(
+          function(response){
+            alert('Ponto enviado');
+            $scope.ponto = response.data;
+          },
+          function(response){
+
+          });
     };
+
+
 };
 
-PontoController.$inject = ['$scope', '$interval', 'PontoService', 'moment'];
+PontoController.$inject = ['$scope', '$interval', '$rootScope', 'PontoService', 'moment'];
 controllers.controller('PontoController', PontoController);

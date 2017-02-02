@@ -12,7 +12,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.manha.ab" type="checkbox">
+                                      <input ng-model="ponto.horarios.manha.ab" type="checkbox">
                                       A-B
                                     </label>
                                 </div>
@@ -20,7 +20,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.manha.cd" type="checkbox">
+                                      <input ng-model="ponto.horarios.manha.cd" type="checkbox">
                                       C-D
                                     </label>
                                 </div>
@@ -31,7 +31,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.tarde.ab" type="checkbox">
+                                      <input ng-model="ponto.horarios.tarde.ab" type="checkbox">
                                       A-B
                                     </label>
                                 </div>
@@ -39,7 +39,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.tarde.cd" type="checkbox">
+                                      <input ng-model="ponto.horarios.tarde.cd" type="checkbox">
                                       C-D
                                     </label>
                                 </div>
@@ -50,7 +50,7 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.noite.ab" type="checkbox">
+                                      <input ng-model="ponto.horarios.noite.ab" type="checkbox">
                                       A-B
                                     </label>
                                 </div>
@@ -58,13 +58,14 @@
                             <td>
                                 <div class="checkbox">
                                     <label>
-                                      <input ng-model="ponto.noite.cd" type="checkbox">
+                                      <input ng-model="ponto.horarios.noite.cd" type="checkbox">
                                       C-D
                                     </label>
                                 </div>
                             </td>
                         </tr>
                     </table>
+                    <textarea name="name" rows="8" class="form-control" required="true" ng-model="ponto.comentario"></textarea>
                     <div class="row">
                         <div class="col-md-4">
                         </div>
