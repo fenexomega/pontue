@@ -26,12 +26,13 @@ app.run(function(amMoment,$rootScope,$route,$location, LoginService){
 
   $rootScope.$on("$locationChangeStart", function(event, next, current){
     console.log($route.routes);
-    for(var  i in $route.routes)
+    for(var i in $route.routes)
     {
         if(next.indexOf(i) != -1)
         {
           if($route.routes[i].requireLogin && !LoginService.isUserAuthenticated())
           {
+
             $location.path("/login");
           }
         }
@@ -48,7 +49,12 @@ app.config(function($routeProvider,$locationProvider){
     controller: 'LoginController',
     requireLogin: false
   })
-  .when('/',{
+  .when('/registrar',{
+    templateUrl: 'partials/registro.html',
+    controller: 'RegistroController',
+    requireLogin: false
+  })
+  .when('/inicio',{
     templateUrl: 'partials/inicio.html',
     controller: 'PontoController',
     requireLogin: true
@@ -59,7 +65,7 @@ app.config(function($routeProvider,$locationProvider){
     requireLogin: true
   })
   .otherwise({
-    redirectTo: '/'
+    redirectTo: '/inicio'
   });
   $locationProvider.html5Mode(true);
 });

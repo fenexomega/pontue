@@ -5,7 +5,7 @@ var URL = "http://localhost:8080";
 function LoginController($scope, $location,$rootScope, LoginService)
 {
   if(LoginService.isUserAuthenticated() && $location.path() == "/login")
-    $location.path("/");
+    $location.path("/inicio");
 
   $scope.limpar = function(){
     delete $scope.aut;

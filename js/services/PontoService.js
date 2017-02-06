@@ -15,19 +15,11 @@ function PontoService($http,routes, AppToolkit)
     });
   }
 
-
-    this.pegarPontosDaSemana = function(token,success_callback,error_callback){
-      $http.get(URL,{
+    this.pegarPontosDaSemana = function(token,semanaNum){
+      return $http.get(URL,{
         headers:{
           "x-access-token": token
         }
-      })
-      .success(function(data, status, headers, config){
-        success_callback(data,status);
-      })
-      .error(function(data, status, headers, config){
-        if(error_callback != undefined)
-          error_callback(data, status, headers, config);
       });
 
     }

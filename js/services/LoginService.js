@@ -5,6 +5,7 @@ var services = angular.module('mainApp.services');
 function LoginService($http, config, routes, AppToolkit){
 
     var LOGIN = AppToolkit.serviceAddress(routes.LOGIN);
+    var REGISTRAR = AppToolkit.serviceAddress(routes.REGISTRAR);
 
     this.realizarLogin = function(email, senha){
 
@@ -12,20 +13,6 @@ function LoginService($http, config, routes, AppToolkit){
             email: email,
             senha: senha
         };
-
-        var req = {
-            method : 'POST',
-            url : LOGIN,
-            data : params,
-            headers: {
-              'Content-Type': 'application/json'
-            }
-        };
-
-        console.log(req);
-        // FIXME esse método não funciona
-
-        console.log(LOGIN);
 
         return $http.post(LOGIN,params);
 
@@ -36,6 +23,10 @@ function LoginService($http, config, routes, AppToolkit){
       return localStorage.getItem("token") != undefined;
     };
 
+    this.registrarUsuario = function(usuario)
+    {
+        return $http.post(REGISTRAR,usuario);
+    };
 }
 
 services.service("LoginService", LoginService);

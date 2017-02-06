@@ -6,7 +6,8 @@
 
     var routes = {
         LOGIN : '/api/autenticar',
-        PONTO : '/api/pontos'      
+        PONTO : '/api/pontos',
+        REGISTRAR: '/api/registrar'      
     };
     return routes;
   }
