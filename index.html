@@ -14,24 +14,8 @@
   <base href="/">
 </head>
 <body ng-app="mainApp">
-  <div class="container" ng-if="isUserAuthenticated()">
-    <nav class="navbar navbar-default bg-faded">
-      <div class="navbar-header">
-        <a href="/" class="navbar-brand mb-0">PONTUE</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="/">Início</a>
-        </li>
-        <li class="">
-          <a href="historico">Histórico</a>
-        </li>
-        <li class="">
-          <a href="#">Conta</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
+  <navbar></navbar>
 
   <div ng-view>
   </div>
@@ -61,10 +45,16 @@
   <script src="js/controllers/PontoController.js" charset="utf-8"></script>
   <script src="js/controllers/LoginController.js" charset="utf-8"></script>
   <script src="js/controllers/RegistroController.js" charset="utf-8"></script>
+  <script src="js/controllers/NavbarController.js" charset="utf-8"></script>
+
   <!-- Services -->
   <script src="js/services/PontoService.js" charset="utf-8"></script>
   <script src="js/services/LoginService.js" charset="utf-8"></script>
   <script src="js/services/AppToolkit.js" charset="utf-8"></script>
+
+  <!-- Directives -->
+  <script src="js/directives/NavbarDirective.js" charset="utf-8"></script>
+
   <!-- Misc -->
   <script src="js/constants/routes.js" charset="utf-8"></script>
   <script src="js/constants/config.js" charset="utf-8"></script>

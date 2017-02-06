@@ -25,6 +25,8 @@ function LoginController($scope, $location,$rootScope, LoginService)
     });
     console.log(result);
   }
+
+
 }
 
 LoginController.$inject = ['$scope','$location','$rootScope', 'LoginService'];

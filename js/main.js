@@ -23,6 +23,7 @@ app.run(function(amMoment,$rootScope,$route,$location, LoginService){
 
   $rootScope.isUserAuthenticated = LoginService.isUserAuthenticated;
   $rootScope.token = localStorage.getItem('token');
+  // BUG essa linha só tá aqui pq na diretiva não consigo chamar o NavbarController
 
   $rootScope.$on("$locationChangeStart", function(event, next, current){
     console.log($route.routes);
