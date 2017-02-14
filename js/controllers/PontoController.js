@@ -166,7 +166,7 @@ $scope.pegarHorasDaSemana = function() {
     $scope.dia_semana = myMoment.format('dddd');
     $scope.data_formatada = myMoment.format('LL');
 
-    pegarPontoDeHoje();
+    // pegarPontoDeHoje();
     incrementarData();
     $interval(incrementarData, 1000);
     configChart();

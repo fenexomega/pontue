@@ -16,7 +16,7 @@ function LoginController($scope, $location,$rootScope, LoginService)
     var result = LoginService.realizarLogin($scope.aut.email,senhaHash);
     result.then(function(response){
       console.log(response);
-      localStorage.setItem('token',response.data.token);
+      localStorage.setItem('token', response.data.token);
       $rootScope.token = response.data.token;
       $location.path("/");
     },function(response){

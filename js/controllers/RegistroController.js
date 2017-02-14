@@ -1,11 +1,10 @@
 'use strict';
-var controllers = angular.module('mainApp.controllers');
-var URL = "http://localhost:8080";
 
-function RegistroController($scope, $location,$rootScope, LoginService)
+var controllers = angular.module('mainApp.controllers');
+
+function RegistroController($scope, $location,$rootScope, RegistroService)
 {
   $scope.registrar = function(usuario){
-
     if(usuario.senha != usuario.confirmacao)
     {
       // TODO pôr erro do bootstrap
@@ -14,7 +13,7 @@ function RegistroController($scope, $location,$rootScope, LoginService)
 
     delete usuario.confirmacao;
 
-    LoginService.registrarUsuario(usuario)
+    RegistroService.registrarUsuario(usuario)
       .then(function(response){
         alert("Registrado com sucesso.");
         $location.path('/login');
@@ -32,5 +31,5 @@ function RegistroController($scope, $location,$rootScope, LoginService)
 
 }
 
-RegistroController.$inject = ['$scope','$location','$rootScope', 'LoginService'];
-controllers.controller('RegistroController',RegistroController);
+RegistroController.$inject = ['$scope','$location','$rootScope', 'RegistroService'];
+controllers.controller('RegistroController', RegistroController);
