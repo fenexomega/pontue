@@ -18,7 +18,22 @@ function ContaService($http, config, routes, AppToolkit){
 
         return $http(req);
 
-    }
+    };
+
+    this.atualizarUsuario = function(token, usuario){
+
+        var req = {
+            method: 'PUT',
+            url: USUARIO+'s', //Corrigir rota do server
+            headers: {
+                'x-access-token': token
+            },
+            data: usuario
+        };
+
+        return $http(req);
+
+    };
     
 }
 
