@@ -65,6 +65,11 @@ app.config(function($routeProvider,$locationProvider){
     controller: 'LoginController',
     requireLogin: true
   })
+  .when('/conta', {
+    templateUrl: 'partials/conta.html',
+    controller: 'ContaController',
+    requireLogin: true  
+  })
   .otherwise({
     redirectTo: '/inicio'
   });

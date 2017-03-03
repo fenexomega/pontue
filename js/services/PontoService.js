@@ -6,9 +6,26 @@ function PontoService($http,routes, AppToolkit)
 
   var PONTO = AppToolkit.serviceAddress(routes.PONTO);
 
+  this.atualizarPonto  = function(ponto, token){
+    var parametro = JSON.stringify(ponto);
+    return $http.put(PONTO,parametro,{
+      headers:{
+        "x-access-token": token
+      }
+    });
+  }
+
   this.enviarPonto = function(ponto,token){
     var parametro = JSON.stringify(ponto);
     return $http.post(PONTO,parametro,{
+      headers:{
+        "x-access-token": token
+      }
+    });
+  }
+
+  this.pegarPontoDeHoje = function(token){
+    return $http.get(PONTO,{
       headers:{
         "x-access-token": token
       }
