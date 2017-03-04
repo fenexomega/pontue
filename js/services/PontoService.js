@@ -32,8 +32,12 @@ function PontoService($http,routes, AppToolkit)
     });
   }
 
-    this.pegarPontosDaSemana = function(token,semanaNum){
-      return $http.get(URL,{
+    this.pegarPontosDaSemana = function(token,semanaNum,ano){
+      return $http.get(PONTO,{
+        params:{
+          ano: ano,
+          semana: semanaNum
+        },
         headers:{
           "x-access-token": token
         }

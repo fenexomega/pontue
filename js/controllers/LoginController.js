@@ -2,13 +2,23 @@
 var controllers = angular.module('mainApp.controllers');
 var URL = "http://localhost:8080";
 
-function LoginController($scope, $location,$rootScope, LoginService)
+function LoginController($scope, $location,$rootScope, LoginService, ContaService)
 {
   if(LoginService.isUserAuthenticated() && $location.path() == "/login")
-    $location.path("/inicio");
+  {
+    ContaService.buscarUsuario($rootScope.token)
+        .then(function(response){
+          // faça nada
+          $location.path("/inicio");
+        },function(response){
+          // login já era
+          $scope.limpar();
+        });
+  }
 
   $scope.limpar = function(){
     delete $scope.aut;
+    localStorage.removeItem('token');
   }
 
   $scope.login = function(){
@@ -29,5 +39,6 @@ function LoginController($scope, $location,$rootScope, LoginService)
 
 }
 
-LoginController.$inject = ['$scope','$location','$rootScope', 'LoginService'];
+LoginController.$inject = ['$scope','$location','$rootScope', 'LoginService',
+                      'ContaService'];
 controllers.controller('LoginController',LoginController);

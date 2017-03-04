@@ -7,8 +7,9 @@
     var routes = {
         LOGIN : '/api/autenticar',
         PONTO : '/api/pontos',
-        REGISTRAR: '/api/registrar', 
-        USUARIO: '/api/usuario'     
+        REGISTRAR: '/api/registrar',
+        USUARIO: '/api/usuario',
+        USUARIO_VALIDO: '/api/usuario/valido'     
     };
     return routes;
   }

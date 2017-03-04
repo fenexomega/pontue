@@ -21,19 +21,21 @@ app.run(function(amMoment,$rootScope,$route,$location, LoginService){
   // mudar localização para português brasileiro
   amMoment.changeLocale('pt-br');
 
+  $rootScope.hasFinished = false;
   $rootScope.isUserAuthenticated = LoginService.isUserAuthenticated;
+
   $rootScope.token = localStorage.getItem('token');
   // BUG essa linha só tá aqui pq na diretiva não consigo chamar o NavbarController
 
-  $rootScope.$on("$locationChangeStart", function(event, next, current){
-    console.log($route.routes);
+  $rootScope.$on("$locationChangeStart", function(event, next, current)
+  {
     for(var i in $route.routes)
     {
         if(next.indexOf(i) != -1)
         {
-          if($route.routes[i].requireLogin && !LoginService.isUserAuthenticated())
+          if($route.routes[i].requireLogin
+            && !LoginService.isUserAuthenticated())
           {
-
             $location.path("/login");
           }
         }
@@ -68,7 +70,7 @@ app.config(function($routeProvider,$locationProvider){
   .when('/conta', {
     templateUrl: 'partials/conta.html',
     controller: 'ContaController',
-    requireLogin: true  
+    requireLogin: true
   })
   .otherwise({
     redirectTo: '/inicio'

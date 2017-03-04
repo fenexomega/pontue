@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <h3> {{ dia_semana}}, {{ data_formatada }}. Hora: {{ hora }}</h3>
-        <h3>Você cumpriu <span class="hora">15</span>horas semanais</h3>
+        <h3>Você cumpriu <span class="hora">{{ horas_completas_semana }}</span> horas semanais</h3>
         <div class="col-sm-6">
             <div class="jumbotron">
                 <h3>Submeter Horas</h3>
@@ -72,8 +72,10 @@
                         <div class="col-md-4">
                         </div>
                         <div class="col-md-4">
-                            <button class="btn btn-primary pull-right" 
+                            <button class="btn btn-primary pull-right" ng-if="ponto == undefined"
                             ng-click="submeterHorasDoDia(ponto)">Enviar</button>
+                            <button class="btn btn-primary pull-right" ng-if="ponto != undefined"
+                            ng-click="submeterHorasDoDia(ponto)">Atualizar</button>
                         </div>
                     </div>
                 </form>

@@ -105,15 +105,22 @@ $scope.myChartObject.options = {
 };
 };
 
-$scope.pegarHorasDaSemana = function() {
+$scope.pegarHorasDaSemana = pegarHorasDaSemana;
+
+  function pegarHorasDaSemana() {
+  var numeroSemana = myMoment.format('ww');
+  var ano = myMoment.format('YYYY');
   console.log("Pegando horas da semana!");
-  PontoService.pegarPontosDaSemana(token,
-    function(data, status) {
-      $scope.horasSemana = data.horas;
-      $scope.semana = data.semana;
+  PontoService.pegarPontosDaSemana($rootScope.token,numeroSemana,ano).then(
+    function(response) {
+      var i = 0;
+      for (var semana of response.data) {
+        i += semana.horasDia;
+      }
+      $scope.horas_completas_semana = i;
     },
     //On Error
-    function(data, status) {
+    function(response) {
       // TODO o que acontece quando dá erro
     });
   };
@@ -142,7 +149,6 @@ $scope.pegarHorasDaSemana = function() {
     *  }
     */
 
-    console.log("Submetendo horas");
     var funcao;
     if(ponto.hasOwnProperty("_id") == false)
       funcao = PontoService.enviarPonto;
@@ -152,7 +158,7 @@ $scope.pegarHorasDaSemana = function() {
 
     funcao(ponto,$rootScope.token).then(
       function(response){
-        console.log(response);
+        pegarHorasDaSemana();
         $scope.ponto = response.data;
       },
       function(response){
@@ -166,9 +172,10 @@ $scope.pegarHorasDaSemana = function() {
     $scope.dia_semana = myMoment.format('dddd');
     $scope.data_formatada = myMoment.format('LL');
 
-    // pegarPontoDeHoje();
+    pegarPontoDeHoje();
     incrementarData();
     $interval(incrementarData, 1000);
+    pegarHorasDaSemana();
     configChart();
 
 
