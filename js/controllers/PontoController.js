@@ -3,7 +3,6 @@ var controllers = angular.module('mainApp.controllers');
 
 function PontoController($scope, $interval, $rootScope, $route, PontoService, moment) {
 
-
   var pegarPontoDeHoje = function(){
     PontoService.pegarPontoDeHoje($rootScope.token).then(function(response){
       $scope.ponto = response.data;
@@ -59,31 +58,37 @@ $scope.pegarHorasDaSemana = pegarHorasDaSemana;
     });
   };
 
+  function validateInput()
+  {
+    console.log($scope.ponto);
+    var validade;
+    var ponto = $scope.ponto;
+    if(ponto.comentario == '' || ponto.comentario == undefined)
+      return false;
+
+    for(var horario in ponto.horarios)
+    {
+      for(var turno in horario)
+      {
+        if( turno == true)
+          return true;
+      }
+    }
+
+    return false;
+  };
 
 
   $scope.submeterHorasDoDia = function(ponto) {
-    // Objeto é um json no seguinte formato
-    /*
-    *  {
-    *    "comentario":"",
-    *     "horarios":{
-    *      "manha":{
-    *      "ab": false,
-    *      "cd":false
-    *      },
-    *      "tarde":{
-    *      "ab":false,
-    *      "cd":false
-    *      },
-    *      "noite":{
-    *      "ab":false,
-    *      "cd":false
-    *      }
-    *    }
-    *  }
-    */
-
     var funcao;
+
+    // FIXME mostrar mensagem de erro no bootstrap
+    if(validateInput() == false)
+    {
+      console.log("Não tem tudo preenchido");
+      return;
+    }
+
     if(ponto.hasOwnProperty("_id") == false)
       funcao = PontoService.enviarPonto;
     else
@@ -111,8 +116,6 @@ $scope.pegarHorasDaSemana = pegarHorasDaSemana;
     $interval(incrementarData, 1000);
     pegarHorasDaSemana();
     configChart();
-
-
   };
 
   PontoController.$inject = ['$scope', '$interval', '$rootScope', '$route', 'PontoService', 'moment'];

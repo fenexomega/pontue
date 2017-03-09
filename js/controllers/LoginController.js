@@ -30,8 +30,9 @@ function LoginController($scope, $location,$rootScope, LoginService, ContaServic
       $rootScope.token = response.data.token;
       $location.path("/");
     },function(response){
-      // TODO o que acontece se o login não der certo
-
+      // o que acontece se o login não der certo
+      console.log("ERRO NO LOGIN: ",response.data.mensagem);
+      $scope.erro = "Login incorreto";
     });
     console.log(result);
   }
