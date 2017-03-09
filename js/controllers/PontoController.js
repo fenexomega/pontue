@@ -21,88 +21,7 @@ function PontoController($scope, $interval, $rootScope, PontoService, moment) {
   };
 
   var configChart = function() {
-    $scope.myChartObject = {};
-    $scope.myChartObject.type = "BarChart";
-    $scope.myChartObject.data = {
-      "cols": [{
-        id: "dia",
-        label: "Dias da Semana",
-        type: "string"
-      },
-      {
-        id: "horas",
-        label: "Total de Horas",
-        type: "number"
-      }
-    ],
-    "rows": [{
-      c: [{
-        v: "Domingo"
-      },
-      {
-        v: 2
-      }
-    ]
-  },
-  {
-    c: [{
-      v: "Segunda"
-    },
-    {
-      v: 2
-    }
-  ]
-},
-{
-  c: [{
-    v: "Terça"
-  },
-  {
-    v: 4
-  }
-]
-},
-{
-  c: [{
-    v: "Quarta"
-  },
-  {
-    v: 2
-  },
-]
-},
-{
-  c: [{
-    v: "Quinta"
-  },
-  {
-    v: 2
-  },
-]
-},
-{
-  c: [{
-    v: "Sexta"
-  },
-  {
-    v: 1
-  },
-]
-},
-{
-  c: [{
-    v: "Sábado"
-  },
-  {
-    v: 2
-  },
-]
-}
-]
-};
-$scope.myChartObject.options = {
-  'title': 'Total de Horas por Dia da Semana'
-};
+
 };
 
 $scope.pegarHorasDaSemana = pegarHorasDaSemana;
@@ -112,12 +31,18 @@ $scope.pegarHorasDaSemana = pegarHorasDaSemana;
   var ano = myMoment.format('YYYY');
   console.log("Pegando horas da semana!");
   PontoService.pegarPontosDaSemana($rootScope.token,numeroSemana,ano).then(
+    // on Success
     function(response) {
       var i = 0;
       for (var semana of response.data) {
         i += semana.horasDia;
       }
       $scope.horas_completas_semana = i;
+      var factory = new SemanaChartFactory();
+      factory.setTitle("Total de Horas");
+      factory.setData(response.data);
+      $scope.chart = factory.create();
+      console.log($scope.chart);
     },
     //On Error
     function(response) {
