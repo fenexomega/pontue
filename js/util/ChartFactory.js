@@ -47,14 +47,20 @@ function SemanaChartFactory(){
 
     this.data.rows = [];
     var rows = this.data.rows;
+    for(dia of diasSemana)
+    {
+      var object = { c: [{ v: dia}, { v: 0 }] };
+      rows.push(object);
+    }
+
     for (dia of semanaObject)
     {
         var numeroDia = dia.numeroDia;
         var nomeDoDia = diasSemana[numeroDia];
         var horasDia  = dia.horasDia;
-        diasSemana.splice( numeroDia, 1);
-        var object = { c: [{ v: nomeDoDia}, { v: horasDia }] };
-        rows.push(object);
+        rows[numeroDia].c[1].v = horasDia;
+
+        // var object = { c: [{ v: nomeDoDia}, { v: horasDia }] };
     }
   };
 
