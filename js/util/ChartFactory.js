@@ -1,4 +1,3 @@
-// TODO fazer classe estática que gerará charts
 function SemanaChartFactory(){
   this.data = {};
   this.typeOfChart = "BarChart";
@@ -59,8 +58,6 @@ function SemanaChartFactory(){
         var nomeDoDia = diasSemana[numeroDia];
         var horasDia  = dia.horasDia;
         rows[numeroDia].c[1].v = horasDia;
-
-        // var object = { c: [{ v: nomeDoDia}, { v: horasDia }] };
     }
   };
 
