@@ -4,13 +4,13 @@
       <a href="/" class="navbar-brand mb-0">PONTUE</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/">Início</a>
+      <li ng-class="{ active: isActive('/inicio')}">
+        <a href="/inicio">Início</a>
       </li>
-      <li class="">
+      <li ng-class="{ active: isActive('/historico')}">
         <a href="historico">Histórico</a>
       </li>
-      <li class="">
+      <li ng-class="{ active: isActive('/conta')}">
         <a href="conta">Conta</a>
       </li>
       <li>

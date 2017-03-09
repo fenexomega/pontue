@@ -1,7 +1,7 @@
 'use strict';
 var controllers = angular.module('mainApp.controllers');
 
-function PontoController($scope, $interval, $rootScope, PontoService, moment) {
+function PontoController($scope, $interval, $rootScope, $route, PontoService, moment) {
 
 
   var pegarPontoDeHoje = function(){
@@ -9,7 +9,16 @@ function PontoController($scope, $interval, $rootScope, PontoService, moment) {
       $scope.ponto = response.data;
       console.log($scope.ponto);
     },function(error){
-      alert("Não foi possível pegar o ponto");
+      // SERVER OFFLINE?
+      if(error.status == -1)
+      {
+        alert("Servidor offline. Clique OK para carregar novamente");
+        $route.reload();
+      }
+      else {
+        alert("Não foi possível pegar o ponto");
+      }
+      console.log(error);
     });
 
   }
@@ -17,7 +26,7 @@ function PontoController($scope, $interval, $rootScope, PontoService, moment) {
   var incrementarData = function() {
     $scope.dataDeHoje.setSeconds($scope.dataDeHoje.getSeconds() + 1);
     var myMoment = moment($scope.dataDeHoje);
-    $scope.hora = myMoment.format('h:mm:ss');
+    $scope.hora = myMoment.format('HH:mm:ss');
   };
 
   var configChart = function() {
@@ -106,5 +115,5 @@ $scope.pegarHorasDaSemana = pegarHorasDaSemana;
 
   };
 
-  PontoController.$inject = ['$scope', '$interval', '$rootScope', 'PontoService', 'moment'];
+  PontoController.$inject = ['$scope', '$interval', '$rootScope', '$route', 'PontoService', 'moment'];
   controllers.controller('PontoController', PontoController);
