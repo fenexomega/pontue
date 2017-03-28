@@ -11,7 +11,7 @@ var pump              = require('pump');
 var webserver         = require('gulp-webserver');
 var mainBowerFiles    = require('main-bower-files');
 var concat            = require('gulp-concat');
-
+var zip               = require('gulp-zip');
 
 
 gulp.task("bower-files", function(){
@@ -23,7 +23,9 @@ gulp.task('webserver', function() {
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
-      open: true
+      open: false,
+      port:8000,
+      fallback: 'index.html'
     }));
 });
 
@@ -32,8 +34,7 @@ gulp.task('html', function(){
 });
 
 gulp.task('css',function(){
-  gulp.src(mainBowerFiles('**/*.css'))
-  .pipe(gulp.dest(dest))
+  // gulp.src(mainBowerFiles('**/*.css')).pipe(gulp.dest(dest + '/css'));
   gulp.src(src + '/**/*.css').pipe(gulp.dest(dest));
 });
 
@@ -47,4 +48,10 @@ gulp.task('js', function (cb) {
   );
 });
 
-gulp.task('default',['html','js','css','bower-files','webserver']);
+gulp.task('dist', function(){
+    gulp.src('public/*')
+      .pipe(zip('pontue.zip'))
+      .pipe(gulp.dest('dist'));
+});
+
+gulp.task('default',['html','js','css','bower-files','webserver','dist']);
