@@ -48,8 +48,8 @@ gulp.task('js', function (cb) {
   );
 });
 
-gulp.task('dist', function(){
-    gulp.src('public/*')
+gulp.task('dist', ['html','js','css','bower-files'], function(){
+    gulp.src('public/**/*')
       .pipe(zip('pontue.zip'))
       .pipe(gulp.dest('dist'));
 });
